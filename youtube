@@ -1,3 +1,7 @@
+import os
+from langchain_community.document_loaders import YoutubeLoader
+
+
 def carrega_youtube():
     url_youtube = input("Digite a URL do vídeo: ")
     loader = YoutubeLoader.from_youtube_url(url_youtube, language=["pt"]) # Carrega a transcrição do vídeo do YouTube
