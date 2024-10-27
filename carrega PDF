@@ -1,0 +1,20 @@
+from langchain_community.document_loaders import PyPDFLoader
+
+def carrega_pdf():
+    inserir_pdf = input("insira o caminho do seu pdf")
+    loader = PyPDFLoader(inserir_pdf)
+    lista_documentos = loader.load()
+    documento = ''.join([doc.page_content for doc in lista_documentos])
+    if documento:
+        salva_documento_txt(documento, 'documento.txt')
+    
+def salva_documento_txt(documento, nome_arquivo):
+    with open(nome_arquivo, 'w', encoding='utf-8') as f:
+        f.write(documento)
+
+carrega_pdf()
+
+with open('documento.txt', 'r', encoding='utf-8') as file:
+            texto = file.read()
+
+# obs.. O pdf tem de estar na mesma pasta do cosigo em python
