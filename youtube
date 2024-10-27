@@ -1,0 +1,13 @@
+def carrega_youtube():
+    url_youtube = input("Digite a URL do vídeo: ")
+    loader = YoutubeLoader.from_youtube_url(url_youtube, language=["pt"]) # Carrega a transcrição do vídeo do YouTube
+    lista_documentos = loader.load()
+    documento = ''.join([doc.page_content for doc in lista_documentos])
+    if documento:
+        salva_documento_txt(documento, 'documento.txt')
+
+def salva_documento_txt(documento, nome_arquivo):
+    with open(nome_arquivo, 'w', encoding='utf-8') as f:
+        f.write(documento)
+
+carrega_youtube()
