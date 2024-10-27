@@ -1,0 +1,21 @@
+
+from langchain_community.document_loaders import WebBaseLoader
+
+
+def carrega_site():
+    url_site = input("Digite a Url do site ")
+    loader = WebBaseLoader(url_site)
+    lista_documentos = loader.load() # faz o carregamento das informações do site (extrai informações do site)
+    documento = '' .join([doc.page_content for doc in lista_documentos])
+    if documento:
+        salva_documento_txt(documento, 'documento.txt')
+   
+
+def salva_documento_txt(documento, nome_arquivo):
+    with open(nome_arquivo, 'w', encoding='utf-8') as f:
+        f.write(documento)
+
+carrega_site()
+
+with open('documento.txt', 'r', encoding='utf-8') as file:
+            texto = file.read()
