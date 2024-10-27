@@ -1,7 +1,6 @@
 import os
 from langchain_community.document_loaders import YoutubeLoader
 
-
 def carrega_youtube():
     url_youtube = input("Digite a URL do vídeo: ")
     loader = YoutubeLoader.from_youtube_url(url_youtube, language=["pt"]) # Carrega a transcrição do vídeo do YouTube
@@ -15,3 +14,8 @@ def salva_documento_txt(documento, nome_arquivo):
         f.write(documento)
 
 carrega_youtube()
+
+
+# Lendo o documento salvo da transcriçao do youtube
+with open('documento.txt', 'r', encoding='utf-8') as file:
+            texto = file.read()
